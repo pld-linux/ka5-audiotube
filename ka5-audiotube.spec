@@ -1,11 +1,13 @@
 #
 # Conditional build:
-%bcond_with	tests		# build with tests
+%bcond_with	tests		# test suite
+
 %define		kdeappsver	23.08.5
 %define		qtver		5.15.2
 %define		kf5ver		5.71.0
 %define		kaname		audiotube
 Summary:	A client for YouTube Music
+Summary(pl.UTF-8):	Klient YouTube Music
 Name:		ka5-%{kaname}
 Version:	23.08.5
 Release:	1
@@ -13,7 +15,7 @@ License:	GPL v3
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
 # Source0-md5:	98514887b61355141f2dde67efd94825
-URL:		http://www.kde.org/
+URL:		https://kde.org/
 BuildRequires:	Qt5Concurrent-devel
 BuildRequires:	Qt5Core-devel >= 5.15.2
 BuildRequires:	Qt5DBus-devel
@@ -53,6 +55,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 AudioTube is a client for YouTube Music.
 
+%description -l pl.UTF-8
+AudioTube to klient YouTube Music.
+
 %prep
 %setup -q -n %{kaname}-%{version}
 
@@ -63,18 +68,19 @@ AudioTube is a client for YouTube Music.
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+
 %ninja_build -C build
 
 %if %{with tests}
 ctest --test-dir build
 %endif
 
-
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %ninja_install -C build
 
-rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/{sr,zh_CN}
+%{__rm} -r $RPM_BUILD_ROOT%{_kdedocdir}/{sr,zh_CN}
 
 %find_lang %{kaname} --all-name --with-kde
 
