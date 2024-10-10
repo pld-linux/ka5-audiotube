@@ -34,8 +34,8 @@ BuildRequires:	kf5-kcoreaddons-devel >= 5.81
 BuildRequires:	kf5-kcrash-devel >= 5.81
 BuildRequires:	kf5-ki18n-devel >= 5.81
 BuildRequires:	kf5-kirigami2-devel >= 5.81
+BuildRequires:	kf5-kirigami-addons-devel >= 0.6.0
 BuildRequires:	kf5-kwindowsystem-devel >= 5.81
-BuildRequires:	kirigami-addons-devel >= 0.6.0
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	python3
