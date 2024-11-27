@@ -10,7 +10,7 @@ Summary:	A client for YouTube Music
 Summary(pl.UTF-8):	Klient YouTube Music
 Name:		ka5-%{kaname}
 Version:	23.08.5
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
